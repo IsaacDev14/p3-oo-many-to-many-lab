@@ -94,4 +94,9 @@ class Contract:
         if not isinstance(value, int):
             raise Exception("royalties must be an integer")
         self._royalties = value
+
+        @classmethod
+        def contracts_by_date(cls, date):
+            return [contract for contract in cls.all if contract.date == date]
+
         
