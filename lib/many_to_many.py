@@ -49,6 +49,10 @@ class Book:
     def contracts(self):
         return [contract for contract in Contract.all if contract.book == self]
 
+    def authors(self):
+        return list({contract.author for contract in self.contracts()})
+
+
     
 
 
