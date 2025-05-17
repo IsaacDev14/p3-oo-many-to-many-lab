@@ -31,19 +31,25 @@ class Author:
 
 class Book:
     all = []
-    def __init__(self, title  ):
+
+    def __init__(self, title):
         self.title = title
         self.__class__.all.append(self)
 
     @property
     def title(self):
         return self._title
-    
+
     @title.setter
     def title(self, value):
         if not isinstance(value, str):
             raise Exception("Title must be a string")
         self._title = value
+
+    def contracts(self):
+        return [contract for contract in Contract.all if contract.book == self]
+
+    
 
 
 class Contract:
