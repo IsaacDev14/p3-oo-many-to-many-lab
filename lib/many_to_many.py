@@ -1,6 +1,19 @@
 class Author:
+    all = []
     def __init__(self, name  ):
         self.name = name
+        self.__class__.all.append(self)
+
+    @property
+    def name(self):
+        return self.__qualname__
+    
+    @name.setter
+    def name(self, value):
+        if not isinstance(value, str):
+            raise Exception("Name must be a string")
+        self._name = value
+
 
 
 class Book:
