@@ -14,6 +14,18 @@ class Author:
             raise Exception("Name must be a string")
         self._name = value
 
+    def contracts(self):
+        return [contract for contract in Contract.all if contract.author == self]
+    
+    def books(self):
+        return list[{contract.book for contract in self.contracts()}]
+    
+    def sign_contract(self, book, date, royalties):
+        return Contract(self, book, date, royalties)
+    
+    def total_royalties(self):
+        return sum(contract.royalties for contract in self.contracts())
+
 
 
 class Book:
