@@ -6,7 +6,8 @@ class Author:
 
     @property
     def name(self):
-        return self.__qualname__
+        return self._name
+
     
     @name.setter
     def name(self, value):
